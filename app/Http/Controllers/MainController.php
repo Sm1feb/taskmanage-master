@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\reg;
-use App\Models\Com;
+use App\Models\Comments;
 use App\Models\Task;
 Use Session;
-class MController extends Controller
+class MainController extends Controller
 {
     //
     public function fm(Request $request)
@@ -63,7 +63,7 @@ return redirect('register');
 }
 public function comment2(Request $request)
 {
-        $add = new Com;
+        $add = new Comments;
         if($request->isMethod('post'))
         {
 
@@ -77,7 +77,7 @@ public function comment2(Request $request)
 }
 public function comment4($id)
 {
-    $task = Com::findOrFail($id);
+    $task = Comments::findOrFail($id);
     $task->delete();
     return redirect()->route('index');
 }
