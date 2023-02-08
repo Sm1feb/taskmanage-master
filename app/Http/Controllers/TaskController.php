@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
-use App\Models\Com;
+use App\Models\Comments;
 use App\Models\User;
 use App\Jobs\SendEmail;
 use Mail;
@@ -18,7 +18,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::orderBy('id','desc')->get();
-        $cmnts = Com::with('comments')->orderBy('id','desc')->get();
+        $cmnts = Comments::with('comments')->orderBy('id','desc')->get();
         // dd($cmnts);
         return view('index',compact('tasks','cmnts'));
     }
